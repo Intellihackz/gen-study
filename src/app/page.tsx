@@ -2,18 +2,11 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[80px_1fr_50px] items-center justify-items-center min-h-screen p-8 pb-20 gap-8 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+    <div className="grid grid-rows-[80px_1fr_50px] items-center justify-items-center min-h-screen p-8 pb-20 gap-8 sm:p-20">
       {/* Header/Navigation */}
       <header className="w-full flex justify-between items-center row-start-1">
         <div className="flex items-center gap-2">
-          <Image
-            src="/next.svg" // Consider replacing with your own logo
-            alt="FlashStudy Logo"
-            width={32}
-            height={32}
-            className="rounded-lg"
-          />
-          <span className="font-bold text-xl">GenStudy</span>
+          <span className="font-bold text-2xl">GenStudy</span>
         </div>
         <nav className="hidden sm:flex gap-6">
           <a href="#features" className="hover:underline">Features</a>
@@ -21,7 +14,7 @@ export default function Home() {
           <a href="#pricing" className="hover:underline">Pricing</a>
         </nav>
         <button className="rounded-full bg-blue-600 text-white px-4 py-2 text-sm font-medium hover:bg-blue-700">
-          Sign Up
+          <a href="/sign-up">Sign Up</a>
         </button>
       </header>
 
@@ -37,7 +30,7 @@ export default function Home() {
           <div className="flex gap-4 mt-6">
             <a
               className="rounded-full bg-blue-600 text-white px-6 py-3 font-medium hover:bg-blue-700 transition-colors"
-              href="/upload"
+              href="/sign-up"
             >
               Try it Now
             </a>
