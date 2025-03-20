@@ -1,10 +1,9 @@
 "use client";
-import Image from "next/image";
 import { useAuth, UserButton } from "@clerk/nextjs";
 import Link from "next/link";
 
 export default function Home() {
-  const { isLoaded, userId, isSignedIn } = useAuth();
+  const { isLoaded, isSignedIn } = useAuth();
 
   return (
     <div className="grid grid-rows-[80px_1fr_50px] items-center justify-items-center min-h-screen p-8 pb-20 gap-8 sm:p-20">
@@ -55,18 +54,18 @@ export default function Home() {
             Upload any PDF and instantly generate flashcards and quizzes to improve your learning experience.
           </p>
           <div className="flex gap-4 mt-6">
-            <a
+            <Link
               className="rounded-full bg-blue-600 text-white px-6 py-3 font-medium hover:bg-blue-700 transition-colors"
               href="/sign-up"
             >
               Try it Now
-            </a>
-            <a
+            </Link>
+            <Link
               className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] px-6 py-3 font-medium hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
               href="#how-it-works"
             >
               Learn More
-            </a>
+            </Link>
           </div>
         </section>
 
