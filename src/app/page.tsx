@@ -1,6 +1,11 @@
+"use client";
 import Image from "next/image";
+import { useAuth, UserButton } from "@clerk/nextjs";
+import Link from "next/link";
 
 export default function Home() {
+  const { isLoaded, userId, isSignedIn } = useAuth();
+
   return (
     <div className="grid grid-rows-[80px_1fr_50px] items-center justify-items-center min-h-screen p-8 pb-20 gap-8 sm:p-20">
       {/* Header/Navigation */}
@@ -13,9 +18,31 @@ export default function Home() {
           <a href="#how-it-works" className="hover:underline">How It Works</a>
           <a href="#pricing" className="hover:underline">Pricing</a>
         </nav>
-        <button className="rounded-full bg-blue-600 text-white px-4 py-2 text-sm font-medium hover:bg-blue-700">
-          <a href="/sign-up">Sign Up</a>
-        </button>
+        {isLoaded ? (
+          isSignedIn ? (
+            <div className="flex items-center gap-4">
+              <Link href="/dashboard" className="hover:underline">Dashboard</Link>
+              <UserButton />
+            </div>
+          ) : (
+            <div className="flex items-center gap-4">
+              <Link 
+                href="/sign-in" 
+                className="text-sm font-medium hover:underline"
+              >
+                Sign In
+              </Link>
+              <Link 
+                href="/sign-up" 
+                className="rounded-full bg-blue-600 text-white px-4 py-2 text-sm font-medium hover:bg-blue-700"
+              >
+                Sign Up
+              </Link>
+            </div>
+          )
+        ) : (
+          <div className="h-8 w-20 bg-gray-200 animate-pulse rounded-full"></div>
+        )}
       </header>
 
       <main className="flex flex-col gap-[40px] row-start-2 items-center w-full max-w-6xl">
